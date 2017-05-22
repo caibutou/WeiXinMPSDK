@@ -60,7 +60,8 @@ namespace Senparc.Weixin.Helpers
             var sha1 = System.Security.Cryptography.SHA1.Create();
             byte[] strRes = Encoding.UTF8.GetBytes(encypStr);
             var hash = sha1.ComputeHash(strRes);
-            var result = Encoding.UTF8.GetString(hash);
+            var result = BitConverter.ToString(hash);
+            result = result.Replace("-", "");
             return result;
         }
 
